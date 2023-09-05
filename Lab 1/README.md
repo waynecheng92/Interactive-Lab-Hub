@@ -4,12 +4,12 @@
 
 **Amber Tsao (ct649), Julia Lin(jtl236), Sherri Lin (yl3658), Wayne Cheng (cc2796), Ifeng Wu (iw84)**
 
-In the original stage production of Peter Pan, Tinker Bell was represented by a darting light created by a small handheld mirror off-stage, reflecting a little circle of light from a powerful lamp. Tinkerbell communicates her presence through this light to the other characters. See more info [here](https://en.wikipedia.org/wiki/Tinker_Bell). 
+In the original stage production of Peter Pan, Tinker Bell was represented by a darting light created by a small handheld mirror off-stage, reflecting a little circle of light from a powerful lamp. Tinkerbell communicates her presence through this light to the other characters. See more info [here](https://en.wikipedia.org/wiki/Tinker_Bell).  
 
-There is no actor that plays Tinkerbell--her existence in the play comes from the interactions that the other characters have with her.
+There is no actor that plays Tinkerbell--her existence in the play comes from the interactions that the other characters have with her.  
 
-For lab this week, we draw on this and other inspirations from theatre to stage interactions with a device where the main mode of display/output for the interactive device you are designing is lighting. You will plot the interaction with a storyboard, and use your computer and a smartphone to experiment with what the interactions will look and feel like. 
-
+For lab this week, we draw on this and other inspirations from theatre to stage interactions with a device where the main mode of display/output for the interactive device you are designing is lighting. You will plot the interaction with a storyboard, and use your computer and a smartphone to experiment with what the interactions will look and feel like.  
+  
 _Make sure you read all the instructions and understand the whole of the laboratory activity before starting!_
 
 
@@ -249,70 +249,69 @@ Do last week’s assignment again, but this time:
 ## Part A. Plan 
 
 **_Setting 1:_**
-A gate placed near to front doors that detects whether a key fob is brought by house owners when passing through the gate. A notification sound will be played if not.
+A gate placed near to front doors that detects whether a key fob is brought by house owners when passing through the gate. A notification sound will be played if not.  
 **_Player 1:_** 
-A house owner
+A house owner  
 **_Activity 1:_** 
-As the homeowners approach their front gate, it automatically senses their key fob. The gate smoothly opens, indicating their presence. However, a subtle notification sound alerts them when a visitor tries to enter without a key fob, ensuring their security and peace of mind.
+As the homeowners approach their front gate, it automatically senses their key fob. The gate smoothly opens, indicating their presence. However, a subtle notification sound alerts them when a visitor tries to enter without a key fob, ensuring their security and peace of mind.  
 **_Goal 1:_**
 To prevent house owners going out without a key fob.
 
 ***Setting 2:***
-A smart chair that can detect how long a person has been sitting on the chair for and will vibrate if the person has been sitting for too long.
+A smart chair that can detect how long a person has been sitting on the chair for and will vibrate if the person has been sitting for too long.  
 ***Player 2:*** 
-A work from home employee
+A work from home employee  
 ***Activity 2*:** 
-As John settles into his smart chair to work, it begins tracking his sitting time. Hours pass, and the chair detects he's been sitting too long. It vibrates gently, reminding him to take a break and stretch. John stands up, appreciating the chair's concern for his well-being, and goes for a short walk to stay refreshed.
+As John settles into his smart chair to work, it begins tracking his sitting time. Hours pass, and the chair detects he's been sitting too long. It vibrates gently, reminding him to take a break and stretch. John stands up, appreciating the chair's concern for his well-being, and goes for a short walk to stay refreshed.  
 **Goal 2:** 
-To prevent the user from sitting on the chair for too long.
+To prevent the user from sitting on the chair for too long.  
 
 ***Setting 3:***
-An oil and stain detector in the kitchen that will shoot light to indicate the biggest stain found.
+An oil and stain detector in the kitchen that will shoot light to indicate the biggest stain found.  
 ***Player 3*:** 
-A housekeeper
+A housekeeper  
 ***Activity 3*:**
-In the kitchen, Jane spills some oil. Suddenly, the oil and stain detector activates, scanning for stains. A beam of light targets the largest stain, signaling Jane to clean it. She follows the light, easily identifying the problem area and efficiently cleaning up the spill.
+In the kitchen, Jane spills some oil. Suddenly, the oil and stain detector activates, scanning for stains. A beam of light targets the largest stain, signaling Jane to clean it. She follows the light, easily identifying the problem area and efficiently cleaning up the spill.  
 ***Goal 3:*** 
-To make the kitchen cleaner and remove stains if possible
+To make the kitchen cleaner and remove stains if possible  
 
 ***Setting 4:***
-Using emotion detection to integrate an inspiring quote generator
+Using emotion detection to integrate an inspiring quote generator  
 ***Player 4:*** 
-A heartbroken person
+A heartbroken person  
 ***Activity 4:*** 
-As Sarah interacts with her device, the emotion detection feature senses her mood. Detecting a hint of melancholy, it seamlessly integrates an inspiring quote into the conversation. Sarah's face brightens as she reads the quote, feeling uplifted by the timely message. This seamless interaction leaves her with a positive, motivated outlook for the day
+As Sarah interacts with her device, the emotion detection feature senses her mood. Detecting a hint of melancholy, it seamlessly integrates an inspiring quote into the conversation. Sarah's face brightens as she reads the quote, feeling uplifted by the timely message. This seamless interaction leaves her with a positive, motivated outlook for the day  
 **Goal 4:** 
-To heal people's daily feelings
+To heal people's daily feelings  
 
-***Setting 5:*** If you have feet odor, the screen on the floor mat will turn red and play a siren sound. If your feet are odorless, the screen will be green and it will play a ding sound.
-***Player 5:*** Someone who wants his/her feet clean 
-***Activity 5:*** In a modern living room, Lisa cautiously steps onto a specialized floor mat. She anxiously awaits the verdict as the screen beneath her feet comes to life. As the mat analyzes the odor, it displays a bright green screen and emits a cheerful ding sound, leaving Lisa relieved and satisfied with her odorless feet.
-***Goal 5:*** To remind you it's time to wash your feet and avoid the awkward scenario
+***Setting 5:*** If you have feet odor, the screen on the floor mat will turn red and play a siren sound. If your feet are odorless, the screen will be green and it will play a ding sound.  
+***Player 5:*** Someone who wants his/her feet clean   
+***Activity 5:*** In a modern living room, Lisa cautiously steps onto a specialized floor mat. She anxiously awaits the verdict as the screen beneath her feet comes to life. As the mat analyzes the odor, it displays a bright green screen and emits a cheerful ding sound, leaving Lisa relieved and satisfied with her odorless feet.  
+***Goal 5:*** To remind you it's time to wash your feet and avoid the awkward scenario  
 
 ***Setting 6:*** 
-A tone detector to identify the extent of politeness for each sentence you speak
+A tone detector to identify the extent of politeness for each sentence you speak  
 ***Player 6:*** 
-An employee working in a team
+An employee working in a team  
 ***Activity 6:*** 
-In a conference room, Sarah speaks confidently into a tone detector microphone. As she talks, a screen displays a real-time analysis of her speech, indicating the level of politeness for each sentence. Sarah's expressions subtly shift as she notices the feedback, helping her refine her communication and maintain a courteous tone throughout the conversation.
+In a conference room, Sarah speaks confidently into a tone detector microphone. As she talks, a screen displays a real-time analysis of her speech, indicating the level of politeness for each sentence. Sarah's expressions subtly shift as she notices the feedback, helping her refine her communication and maintain a courteous tone throughout the conversation.  
 **Goal 6:** 
-When the device detects that your blood pressure and heart rate have risen and your voice has become more emotional, the wristband will vibrate to warn you.
+When the device detects that your blood pressure and heart rate have risen and your voice has become more emotional, the wristband will vibrate to warn you.  
 
 ***Setting 7:*** 
-Smart Table to detect the food type of each meal on the table for your health care
+Smart Table to detect the food type of each meal on the table for your health care  
 ***Player 7:*** 
-A person who wants to maintain a healthy diet
+A person who wants to maintain a healthy diet  
 ***Activity 7:*** 
-In a contemporary kitchen, John stands by a smart table filled with various meals. John waves his hand over the table, activating its food detection feature. A holographic display emerges, showcasing detailed nutritional data for each dish. John studies the information, making informed choices for a healthier meal, all while nodding in approval of the smart table's capabilities.
+In a contemporary kitchen, John stands by a smart table filled with various meals. John waves his hand over the table, activating its food detection feature. A holographic display emerges, showcasing detailed nutritional data for each dish. John studies the information, making informed choices for a healthier meal, all while nodding in approval of the smart table's capabilities.  
 ***Goal 7:*** 
-To discriminate the nutrition of the dish on the table and show the red light if the food is not good for your health
+To discriminate the nutrition of the dish on the table and show the red light if the food is not good for your health  
 
-\*\***Include pictures of your storyboards here**\*\*
+\*\***Include pictures of your storyboards here**\*\*  
 **Photo: Story boards**![](https://hackmd.io/_uploads/S1V3GB4Cn.jpg)
 
 
-\*\***Summarize feedback you got here.**\*\*
-
+\*\***Summarize feedback you got here.**\*\*  
 The idea of the smart table is great, but preferably you would want to have this feature before preparing the meal, otherwise you would be wasting the meal if you didn't end up eating it based on the nutrition information.
 The tone detector and emotion detectors are really creative ideas.
 The feet odor detector mat could possibly include a self-cleaning mechanism, or else the mat might be filled with odor after prolonged use.
@@ -322,6 +321,7 @@ The feet odor detector mat could possibly include a self-cleaning mechanism, or 
 **Are there things that seemed better on paper than acted out?**
 - The foot odor detector seemed better on paper than acted out, because in order for it to be able to properly sense the odor, the user would have to stand on it for a short while, and this may be inconvenient and time-consuming for most people.
 
+<br>
 
 **Are there new ideas that occur to you or your collaborators that come up from the acting?**
 - For the feet odor detector, our initial design was only an indicator, but it could be improved with a feet cleaning or deodorizing functionality. 
@@ -346,17 +346,17 @@ The feet odor detector mat could possibly include a self-cleaning mechanism, or 
 \*\***What concerns or opportunitities are influencing the way you've designed the device to look?**\*\*
 
 **Concerns:**
-- Smart Chair: The chair would need a g-sensor to check if anyone is seated. But if the timer starts automatically, the chair will lose its function of placing other objects.
-- Odor Sensor Rug: The smell may be retained on the rug after using it for a while, causing the sensor (odor detector) to be inaccurate. There should be a deodorizing system to keep the rug functioning correctly.
+- Smart Chair: The chair would need a g-sensor to check if anyone is seated. But if the timer starts automatically, the chair will lose its function of placing other objects.  
+- Odor Sensor Rug: The smell may be retained on the rug after using it for a while, causing the sensor (odor detector) to be inaccurate. There should be a deodorizing system to keep the rug functioning correctly.  
 
 **Opportunities:**
-- Key fob notifier: The key fob notifier uses Bluetooth to detect if the key is near the door, which can be integrated with the door itself. (If the door is opened, check if there is a key nearby.)
+- Key fob notifier: The key fob notifier uses Bluetooth to detect if the key is near the door, which can be integrated with the door itself. (If the door is opened, check if there is a key nearby.)  
 
 ## Part D. Record
 
-\*\***Take a video of your prototyped interaction.**\*\*
-**[Video: Smart chair](https://drive.google.com/file/d/1n2xUzVSMzqg-MjHdbsFmMS61hLIgjBH8/view?usp=drive_link)**
-**[Video: Odor sensor](https://drive.google.com/file/d/1gltSi4NoXruJjAiDbYzc63hvqR1W5uka/view?usp=drive_link)**
+\*\***Take a video of your prototyped interaction.**\*\*  
+**[Video: Smart chair](https://drive.google.com/file/d/1n2xUzVSMzqg-MjHdbsFmMS61hLIgjBH8/view?usp=drive_link)**  
+**[Video: Odor sensor](https://drive.google.com/file/d/1gltSi4NoXruJjAiDbYzc63hvqR1W5uka/view?usp=drive_link)**  
 **[Video: Key fob notifier](https://drive.google.com/file/d/1LIu5EzKardP0Xd9ha7L0YsyVOwXVPYyY/view?usp=drive_link)**
 
 \*\***Please indicate anyone you collaborated with on this Lab.**\*\*
