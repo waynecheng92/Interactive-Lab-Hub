@@ -1,5 +1,6 @@
 # Interactive Prototyping: The Clock of Pi
 **NAMES OF COLLABORATORS HERE**
+***Aris Huang (th625), Julia Lin (jtl236), Sherri Lin (yl3658), Wayne Cheng (cc2796), Ifeng Wu (iw84)***
 
 Does it feel like time is moving strangely during this semester?
 
@@ -23,7 +24,7 @@ Before the start of lab Thursday, [pull changes from the Interactive Lab Hub](ht
 
   ```
   Interactive-Lab-Hub $ git remote add upstream https://github.com/FAR-Lab/Interactive-Lab-Hub.git
-  Interactive-Lab-Hub $ git pull upstream Fall2023
+  Interactive-Lab-Hub $ git pull upstream Fall2022
   ```
   
   The reason why we are adding a upstream with **course lab-hub** instead of yours is because the local Interactive-Lab-Hub folder is linked with your own git repo already. Try typing ``git remote -v`` and you should see there is the origin branch with your own git repo. We here add the upstream to get latest updates from the teaching team by pulling the **course lab-hub** to your local machine. After your local folder got the latest updates, push them to your remote git repo by running:
@@ -200,6 +201,15 @@ Can you make time interactive? You can look in `screen_test.py` for examples for
 
 Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www.billverplank.com/IxDSketchBook.pdf)!
 
+**[Photo: Verplank Diagram]**
+
+![](readme_pics/verplank_diagram.jpg)
+
+**[Photo: Sketch of the clock idea]**
+
+![](readme_pics/curr_default.png)
+![](readme_pics/curr_button.jpg)
+
 **We strongly discourage and will reject the results of literal digital or analog clock display.**
 
 
@@ -219,10 +229,52 @@ After that, Git will ask you to login to your GitHub account to push the updates
 ## Part F. 
 ## Make a short video of your modified barebones PiClock
 
-\*\*\***Take a video of your PiClock.**\*\*\*
+### Our current PiClock when..
+
+#### - No button is pressed (default display):
+- A real-time clock will be displayed on the upper-middle of the screen using the SuperMario font.
+- An dog running towards 9 bones. 
+- One bone disappears per second. 
+- All bones reappears every 10 seconds.
+#### - D23 (upper) button is pressed:
+- Displays the date information with an evening background scene.
+#### - D24 (lower) button is pressed:
+- Displays the day of the week with an afternoon background scene.
+
+<br>
+
+\*\*\***Take a video of your PiClock.**\*\*\*  
+**[Video: PiClock demo](https://drive.google.com/file/d/12Ymj5BVq8HbEHQm78JBFS4DtwSplKe8s/view?usp=drive_link)**
 
 ## Part G. 
 ## Sketch and brainstorm further interactions and features you would like for your clock for Part 2.
+
+**[Photo: Sketch for Part 2.]**
+![](readme_pics/furture_d23_day.png)
+![](readme_pics/future_d23_night.png)
+![](readme_pics/future_d24.png) 
+
+### Our future PiClock when..
+
+#### - No button is pressed (default display):
+- A real-time clock will be displayed on the upper-middle of the screen using the SuperMario font.
+- A dog running towards 9 bones. 
+- One bone disappears per second. 
+- All bones reappears every 10 seconds.
+#### - D23 (upper) button is pressed:
+- A running dog 
+- Moving clouds
+- First 12 hours:
+    - A daytime sky view
+    - A light green lawn
+    - Sun slowly sets as daytime passes
+- Second 12 hours:
+    - A nighttime sky view
+    - A dark green lawn
+    - Moon slowly sets as nighttime passes  
+
+#### - D24 (lower) button is pressed:
+- Same display as when D23 is pressed but a bone will appear and gradually moves towards the running dog and disappear when it reaches the dog.  
 
 
 # Prep for Part 2
