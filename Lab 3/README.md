@@ -1,5 +1,5 @@
 # Chatterboxes
-**NAMES OF COLLABORATORS HERE**
+**Amber Tsao (ct649), Aris Huang (th625), Julia Lin (jtl236), Sherri Lin (yl3658), Wayne Cheng (cc2796), Ifeng Wu (iw84)**
 [![Watch the video](https://user-images.githubusercontent.com/1128669/135009222-111fe522-e6ba-46ad-b6dc-d1633d21129c.png)](https://www.youtube.com/embed/Q8FWzLMobx0?start=19)
 
 In this lab, we want you to design interaction with a speech-enabled device--something that listens and talks to you. This device can do anything *but* control lights (since we already did that in Lab 1).  First, we want you first to storyboard what you imagine the conversational interaction to be like. Then, you will use wizarding techniques to elicit examples of what people might say, ask, or respond.  We then want you to use the examples collected from at least two other people to inform the redesign of the device.
@@ -68,6 +68,15 @@ You can also play audio files directly with `aplay filename`. Try typing `aplay 
 
 \*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
 (This shell file should be saved to your own repo for this lab.)
+  
+[**GoogleTTS_gretting.sh**](speech-scripts/GoogleTTS_gretting.sh)
+
+```
+#!/bin/bash
+say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
+#say $*
+say " Hey Ifeng nice to meet you."
+```
 
 ---
 Bonus:
@@ -110,6 +119,53 @@ python test_microphone.py -m en
 
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
 
+[**rizz.sh**](speech-scripts/rizz.sh)
+```
+#!/bin/bash
+say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
+#say $*
+say " Hey can I have your number?"
+python rizz_recording.py -m en -f number.txt
+say " Got you, so your number is"
+value=`cat number.txt`
+say "$value"
+say " I have saved it in my contact"
+```
+
+[**rizz_recording.py**](speech-scripts/rizz_recording.py)  
+```
+def str2num(data):
+    str2num_dict = {'zero': '0', 'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5', 'six': '6', 'seven': '7',
+                    'eight': '8', 'nine': '9', 'o': '0', 'oh': '0', 'for': '4', 'or': '4'}
+    special_char = ['"', '{', '}', ':']
+    for c in special_char:
+        data = data.replace(c, '')
+    res = ''
+    for t in data.split():
+        t = t.lower()
+        if t in str2num_dict:
+            res += str2num_dict[t]
+            res += ' '
+    return res
+
+...
+
+while True:
+    data = q.get()
+    if rec.AcceptWaveform(data):
+        detect_data = rec.Result()
+        print(detect_data)
+        detect_data = str2num(detect_data)
+        print(detect_data)
+        if dump_fn is not None:
+            dump_fn.write(detect_data)
+            dump_fn.close()
+        parser.exit(0)
+    else:
+        print(rec.PartialResult())
+```  
+**Video**
+[Video Link](https://drive.google.com/file/d/1bjm0Ppt-7ZbSnS6h1Ja0Lc4dxb51crF6/view?usp=share_link)
 
 ### Serving Pages
 
@@ -134,16 +190,31 @@ From a remote browser on the same network, check to make sure your webserver is 
 Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stuck? Make a device that talks for dogs. If that is too stupid, find an application that is better than that.) 
 
 \*\***Post your storyboard and diagram here.**\*\*
+![](https://hackmd.io/_uploads/rJ3Qf6skp.jpg)
+![](https://hackmd.io/_uploads/BkGtWTjya.jpg)
+ 
 
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
-
 \*\***Please describe and document your process.**\*\*
+
+<!-- ![](https://hackmd.io/_uploads/rJ3Qf6skp.jpg)
+ -->
+
+![](https://hackmd.io/_uploads/Syfbw3oJp.png)
+
+[Link to Script](https://docs.google.com/document/d/1HKsMSRjF0ELpIccWbYSJYWkbKBNw8_C8tZTLe8Lkzl0/edit)
+
+
 
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
 
+ [Dialogue Acting Video](https://drive.google.com/file/d/1oRaEOPZ7_Oj229C0Medrwhu07qhtvb_0/view?usp=sharing)
+
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
+
+In the first take of the video (due to blooper), we realized that when we asked the user to indicate whether they want to eat breakfast, lunch, or dinner, instead of simply stating one choice, the user will answer in complete sentences. Therefore, we may have to think about how to process and handle user's speech if the user did not respond in the format that we anticipated. This seems to be a recurring problem, so we need to think about how we can change the way we structure the question to make the users naturally respond as intended. Lastly, we realize that sometimes the user will respond even before the robot finishes listing out all of our choices from our questions. So, that might be something that we could consider (i.e.  only allow the users to respond AFTER the robot finished asking the question).
 
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
@@ -191,4 +262,5 @@ Answer the following:
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
+
 
