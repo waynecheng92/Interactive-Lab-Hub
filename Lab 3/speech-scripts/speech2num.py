@@ -11,6 +11,8 @@ import sounddevice as sd
 
 from vosk import Model, KaldiRecognizer
 
+import json
+
 q = queue.Queue()
 
 def int_or_str(text):
@@ -25,6 +27,17 @@ def callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(bytes(indata))
+
+text2num_dict = {'zero':'0', 'one':'1', 'two':'2', 'three':'3', 'four':'4', 
+                 'five':'5', 'six':'6', 'seven':'7', 'eight':'8', 'nine':'9'}
+def text2num(num_list):
+    result = ""
+    for n in num_list:
+        try:
+            result += text2num_dict[n]
+        except KeyError:
+            continue
+    return result
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -76,9 +89,9 @@ try:
         while True:
             data = q.get()
             if rec.AcceptWaveform(data):
-                print(rec.Result())
-            else:
-                print(rec.PartialResult())
+                speech_detected = json.loads(rec.Result())
+                if list(speech_detected.keys())[0] == 'text':
+                    print(text2num(speech_detected['text'].split()))
             if dump_fn is not None:
                 dump_fn.write(data)
 

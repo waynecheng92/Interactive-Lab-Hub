@@ -68,15 +68,7 @@ You can also play audio files directly with `aplay filename`. Try typing `aplay 
 
 \*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
 (This shell file should be saved to your own repo for this lab.)
-  
-[**GoogleTTS_gretting.sh**](speech-scripts/GoogleTTS_gretting.sh)
 
-```
-#!/bin/bash
-say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
-#say $*
-say " Hey Wayne nice to meet you."
-```
 
 ---
 Bonus:
@@ -119,53 +111,6 @@ python test_microphone.py -m en
 
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
 
-[**rizz.sh**](speech-scripts/rizz.sh)
-```
-#!/bin/bash
-say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
-#say $*
-say " Hey can I have your number?"
-python rizz_recording.py -m en -f number.txt
-say " Got you, so your number is"
-value=`cat number.txt`
-say "$value"
-say " I have saved it in my contact"
-```
-
-[**rizz_recording.py**](speech-scripts/rizz_recording.py)  
-```
-def str2num(data):
-    str2num_dict = {'zero': '0', 'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5', 'six': '6', 'seven': '7',
-                    'eight': '8', 'nine': '9', 'o': '0', 'oh': '0', 'for': '4', 'or': '4'}
-    special_char = ['"', '{', '}', ':']
-    for c in special_char:
-        data = data.replace(c, '')
-    res = ''
-    for t in data.split():
-        t = t.lower()
-        if t in str2num_dict:
-            res += str2num_dict[t]
-            res += ' '
-    return res
-
-...
-
-while True:
-    data = q.get()
-    if rec.AcceptWaveform(data):
-        detect_data = rec.Result()
-        print(detect_data)
-        detect_data = str2num(detect_data)
-        print(detect_data)
-        if dump_fn is not None:
-            dump_fn.write(detect_data)
-            dump_fn.close()
-        parser.exit(0)
-    else:
-        print(rec.PartialResult())
-```  
-**Video**
-[Video Link](https://drive.google.com/file/d/1bjm0Ppt-7ZbSnS6h1Ja0Lc4dxb51crF6/view?usp=share_link)
 
 ### Serving Pages
 
@@ -228,8 +173,22 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
+
+Timing: For timing, we have to think about what would happen if the users did not speak for a long time. How would the system handle long pause or silence.
+
+Misunderstanding: It is highly plausible that the device might not be able to catch all the word precisely, but in the case if the device cannot decipher the user's speech, we should then be able to re-prompt the user to say their speech again.
+
+
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
+
+We may consider to incorporate camera as inputs in addition to speech. If we are trying to detect user's emotion, using computer vision via the camera, we can also evaluate people's state of emotion when they're inquiring the device with food recommendation. For instance, if the user seems to be angry or sad, we may want to offer more comfort food options for the users to pick from. Additionally, if the user seems confused or puzzled by the prompt, we can initiate the device to re-ask the prompt.
+
 3. Make a new storyboard, diagram and/or script based on these reflections.
+
+Storyboard:
+
+![](https://hackmd.io/_uploads/Sk2zQpuxa.jpg)
+
 
 ## Prototype your system
 
@@ -239,28 +198,55 @@ The system should:
 * require participants to speak to it. 
 
 *Document how the system works*
+1) Run the speech.py file, make sure to pip install gTTS and OpenA first. 
+2) To initate a conversation, say 'hey'. This is similar to how people normally summon Siri.
+3) The user can try to say something rude or aggressive to the system. Ex. speech: "Can you shut up?"
+4) The system will respond, "To make it more polite from (original speech), you can say, (system suggested speech)."
+5) As the result, the user speech will be translated into the polite version of the original input.
+
+Storyboard:  
+![](https://hackmd.io/_uploads/HyKMBTOgT.jpg)
+
+
 
 *Include videos or screencaptures of both the system and the controller.*
+
+
+Videos:  
+[Video Interaction](https://drive.google.com/file/d/1RpJCDhcsD6OY3kkzSm1T08Z0NV5s9J0S/view?usp=sharing)
+
+
 
 ## Test the system
 Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
 
+Participant: Joanne Chen and Yichen
+
 Answer the following:
 
 ### What worked well about the system and what didn't?
-\*\**your answer here*\*\*
+To make sure our idea is brand new, we integrated the latest tool OpenAI API into our design. The ability to transform speech from impolite to polite was our central focus, which worked really well. One part that could've been done better is that more functions could be added. Our current design only contains one function, that is to reframe words into a more polite way. One of our test user mentioned that the use case of the system is a little unclear. Potentially in the future, we can explore more functionalities. 
 
 ### What worked well about the controller and what didn't?
+The controller used in this design is OpenAI API. By sending the speech detected from the webcam as the request input then ouput the response of the reframed speech. Both Joanne and Yichen thought the stength of our design is that we built our system on top of one of the most powerful tools nowadays, so that our design can tackle different queries and always provide an response. However, Joanne also mentioned that this could also be a double-edge sword, if the server-side of OpenAI has broken down then this controller will not be able to work.
 
-\*\**your answer here*\*\*
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
-\*\**your answer here*\*\*
+We used the OpenAI API to build an autonomous system. The most challenging part is to decide the prompt to create a smooth interaction. For example, there are cases that chatGPT is not able to revise users' sentence but instead reply the users. This may be solved by adding clearer prompt to the system.
 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
-\*\**your answer here*\*\*
+How data could be collected:
+- We could gather data on user feedback and use it to improve the quality of responses.
+- Gather more data from users and calculate the average length of questions, then based on the result, adjust the default listening time to improve overall user experience.
 
+Other sensing modalities to capture: 
+- Emotional Tone (like IBM Watson “Tone Analyzer”)
+    - Positivity/negativity of the question asked
+
+- Facial Expression
+    - Detect user's emotion state by using camera to further analyze how the system can address the user
+- Extend of the Volume (dB)
 

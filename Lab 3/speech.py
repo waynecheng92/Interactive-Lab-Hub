@@ -1,17 +1,28 @@
-#!/usr/bin/env python3
-
-# prerequisites: as described in https://alphacephei.com/vosk/install and also python module `sounddevice` (simply run command `pip install sounddevice`)
-# Example usage using Dutch (nl) recognition model: `python test_microphone.py -m nl`
-# For more help run: `python test_microphone.py -h`
-
+from gtts import gTTS
+import os
+import openai
 import argparse
 import queue
 import sys
 import sounddevice as sd
-
 from vosk import Model, KaldiRecognizer
+import json
+import config
 
 q = queue.Queue()
+language = 'en'
+
+openai.api_key = config.api_key
+def get_chatgpt_res(user_input):
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[
+        {"role": "system", "content": "make it more polite"},
+        {"role": "user", "content": user_input}],
+        temperature=1,
+        max_tokens=256,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0)
+    return "To make it more polite, you can say: " + response.choices[0].message.content.strip()
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -26,19 +37,15 @@ def callback(indata, frames, time, status):
         print(status, file=sys.stderr)
     q.put(bytes(indata))
 
-def str2num(data):
-    str2num_dict = {'zero': '0', 'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5', 'six': '6', 'seven': '7',
-                    'eight': '8', 'nine': '9', 'o': '0', 'oh': '0', 'for': '4', 'or': '4', 'to': '2', 'forty': '4'}
-    special_char = ['"', '{', '}', ':']
-    for c in special_char:
-        data = data.replace(c, '')
-    res = ''
-    for t in data.split():
-        t = t.lower()
-        if t in str2num_dict:
-            res += str2num_dict[t]
-            res += ' '
-    return res
+played = 0
+
+def saythis(mytext):
+    myobj = gTTS(text=mytext, lang=language, slow=False)
+    myobj.save("content.mp3")
+    os.system("mpg123 content.mp3")
+
+def speechmode():
+    return
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -76,7 +83,7 @@ try:
         model = Model(lang=args.model)
 
     if args.filename:
-        dump_fn = open(args.filename, "w")
+        dump_fn = open(args.filename, "wb")
     else:
         dump_fn = None
 
@@ -90,21 +97,19 @@ try:
         while True:
             data = q.get()
             if rec.AcceptWaveform(data):
-                detect_data = rec.Result()
-                print(detect_data)
-                detect_data = str2num(detect_data)
-                print(detect_data)
-                if dump_fn is not None:
-                    dump_fn.write(detect_data)
-                    dump_fn.close()
-                parser.exit(0)
-            else:
-                print(rec.PartialResult())
+                speech_detected = json.loads(rec.Result())
+                if speech_detected['text'] == "hey":
+                    played = 0
+                elif played == 0:
+                    saythis(get_chatgpt_res(speech_detected['text']))
+                    played = 1
+                else:
+                    continue
+            if dump_fn is not None:
+                dump_fn.write(data)
 
 except KeyboardInterrupt:
     print("\nDone")
     parser.exit(0)
 except Exception as e:
     parser.exit(type(e).__name__ + ": " + str(e))
-
-

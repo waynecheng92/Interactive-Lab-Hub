@@ -3,5 +3,5 @@
 #!/bin/bash
 say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
 #say $*
-say " Hey Wayne nice to meet you."
+say "Hi Amber, how are you doing today?"
  
